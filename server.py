@@ -326,6 +326,18 @@ class HMSHandler(BaseHTTPRequestHandler):
         return True, params
 
     def do_GET(self):
+if self.path == "/" or self.path == "":
+    try:
+        with open("HMS.html", "rb") as f:
+            content = f.read()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html")
+        self.send_header("Content-Length", len(content))
+        self.end_headers()
+        self.wfile.write(content)
+        return
+    except:
+        pass
         self.route()
         conn = get_db()
         try:
