@@ -21,7 +21,7 @@ from urllib.parse import urlparse, parse_qs
 # ─────────────────────────────────────────────
 # CONFIG
 # ─────────────────────────────────────────────
-PORT = 8000
+PORT = int(os.environ.get("PORT", 8000))
 DB_PATH = os.path.join(os.path.dirname(__file__), "medicore.db")
 JWT_SECRET = "medicore-super-secret-jwt-key-2026"
 JWT_EXPIRY = 3600  # 1 hour
